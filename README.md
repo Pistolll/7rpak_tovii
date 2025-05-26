@@ -1,63 +1,59 @@
-# prz7
+# Adversarial Robustness Toolbox examples
 
-Атаки на модели машинного обучения и защита от них
+## Get Started with ART
+These examples train a small model on the MNIST dataset and creates adversarial examples using the Fast Gradient Sign 
+Method. Here we use the ART classifier to train the model, it would also be possible to provide a pretrained model to 
+the ART classifier. The parameters are chosen for reduced computational requirements of the script and not optimised 
+for accuracy.
 
----
 
-## Задание 1. Атаки на модели машинного обучения
+### TensorFlow
+[get_started_tensorflow.py](get_started_tensorflow.py) demonstrates a simple example of using ART with TensorFlow v1.x. 
 
-### Исходные данные
+### Keras
+[get_started_keras.py](get_started_keras.py) demonstrates a simple example of using ART with Keras. 
 
-Фреймворк Adversarial Robustness Toolbox (ART) v1.14.
+### PyTorch
+[get_started_pytorch.py](get_started_pytorch.py) demonstrates a simple example of using ART with PyTorch. 
 
-Выбрать сценарий атки и реализовать его на платформе `Colab`.
+### MXNet
+[get_started_mxnet.py](get_started_mxnet.py) demonstrates a simple example of using ART with MXNet. 
 
-## Задание 2. Защита от атак на модели машинного обучения
+### Scikit-learn
+[get_started_scikit_learn.py](get_started_scikit_learn.py) demonstrates a simple example of using ART with Scikit-learn. 
+This example uses the support vector machine SVC, but any other classifier of Scikit-learn can be used as well.
 
-### Исходные данные
+### XGBoost
+[get_started_xgboost.py](get_started_xgboost.py) demonstrates a simple example of using ART with XGBoost.
+Because gradient boosted tree classifier do not provide gradients, the adversarial examples are created with the 
+black-box method Zeroth Order Optimization.
 
-Фреймворк Adversarial Robustness Toolbox (ART) v1.14.
+### InverseGAN
+[get_started_inverse_gan.py](get_started_inverse_gan.py) demonstrates a simple example of using 
+InverseGAN and Defense ART with TensorFlow v1.x.
 
-Выбрать сценарий защиты от атки, реализованной на этапе 1 и произвести защиту, продемонстрировать ее работу на платформе `Colab`.
+### LightGBM
+[get_started_lightgbm.py](get_started_lightgbm.py) demonstrates a simple example of using ART with LightGBM.
+Because gradient boosted tree classifier do not provide gradients, the adversarial examples are created with the 
+black-box method Zeroth Order Optimization.
 
-# Adversarial Robustness Toolbox (ART) v1.14
 
-Adversarial Robustness Toolbox (ART) is a Python library for Machine Learning Security. ART is hosted by the 
-[Linux Foundation AI & Data Foundation](https://lfaidata.foundation) (LF AI & Data). ART provides tools that enable
-developers and researchers to defend and evaluate Machine Learning models and applications against the
-adversarial threats of Evasion, Poisoning, Extraction, and Inference. ART supports all popular machine learning frameworks
-(TensorFlow, Keras, PyTorch, MXNet, scikit-learn, XGBoost, LightGBM, CatBoost, GPy, etc.), all data types
-(images, tables, audio, video, etc.) and machine learning tasks (classification, object detection, speech recognition,
-generation, certification, etc.).
+## Applications
 
-## Adversarial Threats
+[adversarial_training_cifar10.py](adversarial_training_cifar10.py) trains a convolutional neural network on the CIFAR-10 
+dataset, then generates adversarial images using the DeepFool attack and retrains the network on the training set 
+augmented with the adversarial images.
 
-<p align="center">
-  <img src="docs/images/adversarial_threats_attacker.png?raw=true" width="400" title="ART logo">
-  <img src="docs/images/adversarial_threats_art.png?raw=true" width="400" title="ART logo">
-</p>
-<br />
+[adversarial_training_data_augmentation.py](adversarial_training_data_augmentation.py) shows how to use ART and Keras 
+to perform adversarial training using data generators for CIFAR-10.
 
-## ART for Red and Blue Teams (selection)
+[mnist_cnn_fgsm.py](mnist_cnn_fgsm.py) trains a convolutional neural network on MNIST, then crafts FGSM attack examples 
+on it.
 
-<p align="center">
-  <img src="docs/images/white_hat_blue_red.png?raw=true" width="800" title="ART Red and Blue Teams">
-</p>
-<br />
+[mnist_poison_detection.py](mnist_poison_detection.py) generates a backdoor for MNIST dataset, then trains a 
+convolutional neural network on the poisoned dataset and runs activation defence to find poison.
 
-## Learn more
-
-| **[Get Started][get-started]**     | **[Documentation][documentation]**     | **[Contributing][contributing]**           |
-|-------------------------------------|-------------------------------|-----------------------------------|
-| - [Installation][installation]<br>- [Examples](examples/README.md)<br>- [Notebooks](notebooks/README.md) | - [Attacks][attacks]<br>- [Defences][defences]<br>- [Estimators][estimators]<br>- [Metrics][metrics]<br>- [Technical Documentation](https://adversarial-robustness-toolbox.readthedocs.io) | - [Slack](https://ibm-art.slack.com), [Invitation](https://join.slack.com/t/ibm-art/shared_invite/enQtMzkyOTkyODE4NzM4LTA4NGQ1OTMxMzFmY2Q1MzE1NWI2MmEzN2FjNGNjOGVlODVkZDE0MjA1NTA4OGVkMjVkNmQ4MTY1NmMyOGM5YTg)<br>- [Contributing](CONTRIBUTING.md)<br>- [Roadmap][roadmap]<br>- [Citing][citing] |
-
-[get-started]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/Get-Started
-[attacks]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Attacks
-[defences]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Defences
-[estimators]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Estimators
-[metrics]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Metrics
-[contributing]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/Contributing
-[documentation]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/Documentation
-[installation]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/Get-Started#setup
-[roadmap]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/Roadmap
-[citing]: https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/Contributing#citing-art
+[mnist_transferability.py](mnist_transferability.py) trains a convolutional neural network on the MNIST dataset using 
+the Keras backend, then generates adversarial images using DeepFool and uses them to attack a convolutional neural 
+network trained on MNIST using TensorFlow. This is to show how to perform a black-box attack: the attack never has
+access to the parameters of the TensorFlow model.
